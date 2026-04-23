@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Ruff Lint
+        run: poetry run ruff check .
+
+      - name: Black Format Check
+        run: poetry run black --check .
+
+      - name: MyPy Type Check
+        run: poetry run mypy src
+
+      - name: Run Tests
+        run: poetry run pytest -v

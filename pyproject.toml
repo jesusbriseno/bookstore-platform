@@ -1,0 +1,33 @@
+[project]
+name = "bookstore-platform"
+version = "0.1.0"
+description = "Book store API with FastAPI"
+authors = [
+    {name = "Jesus Briseño", email = "jesus.briseño@axity.com"}
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.136.0,<0.137.0",
+    "uvicorn>=0.46.0,<0.47.0",
+    "sqlalchemy>=2.0.49,<3.0.0",
+    "pydantic>=2.13.3,<3.0.0"
+]
+
+[tool.poetry]
+packages = [
+    { include = "bookstore", from = "src" }
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3,<10.0.0",
+    "ruff>=0.15.11,<0.16.0",
+    "black>=26.3.1,<27.0.0",
+    "isort>=8.0.1,<9.0.0",
+    "mypy>=1.20.2,<2.0.0",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
