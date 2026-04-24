@@ -34,3 +34,9 @@ jobs:
 
       - name: Run Tests
         run: poetry run pytest -v
+
+      - name: Install pip-audit
+        run: poetry run pip install pip-audit
+
+      - name: Dependency Audit
+        run: poetry run pip-audit

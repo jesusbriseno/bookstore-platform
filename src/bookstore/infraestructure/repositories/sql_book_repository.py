@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
 from bookstore.models.book import Book
 from bookstore.domain.entities.book import BookEntity
-from bookstore.ports.repositories.book_repository import BookRepository
+#from bookstore.ports.repositories.book_repository import BookRepository
+from bookstore.domain.repositories.book_repository import BookRepository
 
 
 class SqlBookRepository(BookRepository):

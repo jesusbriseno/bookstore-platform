@@ -1,8 +1,11 @@
 from fastapi.testclient import TestClient
 from bookstore.main import app
+from bookstore.core.dependencies import verify_token
+
+# Override JWT dependency
+app.dependency_overrides[verify_token] = lambda: {"sub": "test-user"}
 
 client = TestClient(app)
-
 
 def test_root():
     response = client.get("/")
